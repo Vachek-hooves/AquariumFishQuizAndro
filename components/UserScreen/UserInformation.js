@@ -13,10 +13,13 @@ import {COLOR} from '../../const/colors';
 import {setNewProfileName} from '../../store/utilsUserActions';
 import GameStatistic from './GameStatistic';
 
+// Add default image import at the top
+const defaultImage = require('../../assets/img/profile/defaultProfileImage.png');
+
 const UserInformation = ({profile}) => {
   const [activeRename, setActiveRename] = useState(false);
   const [profileName, setNewName] = useState(profile.name);
-  const [profileImage, setNewImage] = useState(profile.image);
+  const [profileImage, setNewImage] = useState(profile.image || defaultImage);
 
   const nameChange = async () => {
     await setNewProfileName('name', profileName);
@@ -24,12 +27,12 @@ const UserInformation = ({profile}) => {
   };
 
   const replaceImage = async image => {
-    setNewImage(image);
-    await setNewProfileName('image', image);
+    setNewImage(image || defaultImage);
+    await setNewProfileName('image', image || defaultImage);
   };
 
   return (
-    <SafeAreaView style={{flex:1}}>
+    <SafeAreaView style={{flex:1,paddingTop: '10%'}}>
       {activeRename ? (
         <View style={{alignItems: 'center'}}>
           <TextInput
@@ -50,7 +53,10 @@ const UserInformation = ({profile}) => {
           </TouchableOpacity>
           <PickImage saveImage={image => replaceImage(image)}>
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
-              <Image source={{uri: profileImage}} style={styles.image} />
+              <Image 
+                source={typeof profileImage === 'string' ? {uri: profileImage} : profileImage} 
+                style={styles.image} 
+              />
               <Text style={{fontSize: 18, position: 'absolute'}}>
                 Choose Photo
               </Text>

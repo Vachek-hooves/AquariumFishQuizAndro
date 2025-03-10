@@ -5,6 +5,7 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import {useContext, useEffect, useState} from 'react';
 import {AquariumContext} from '../store/aqua_context';
@@ -45,7 +46,11 @@ const UserScreen = () => {
       return;
     }
 
-    const submitData = {profileId: genKey(), name, image};
+    const submitData = {
+      profileId: genKey(),
+      name,
+      image: image || require('../assets/img/profile/defaultProfileImage.png'),
+    };
     try {
       await submitProfile(submitData);
       const updatedData = await getProfile();
@@ -56,7 +61,7 @@ const UserScreen = () => {
   };
 
   const resetInputs = () => {
-    setInputs({name: ''});
+    setInputs({name: '', image: ''});
   };
 
   return (
