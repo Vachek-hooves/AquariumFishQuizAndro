@@ -14,7 +14,9 @@ import {LoseFish, WinFish} from '../icons';
 import {AquariumContext} from '../../store/aqua_context';
 import {optionsFontSize, optionsHeightAdjust} from '../../styles/generalStyle';
 
+
 const QuizDetails = ({quizData}) => {
+  
   const {setLevelScoreHandle, gameScore} = useContext(AquariumContext);
   console.log(gameScore);
 
@@ -112,6 +114,7 @@ const QuizDetails = ({quizData}) => {
           mainMenuNav={navigateGameScreen}
           closeModal={setIsModal}
           subject={SUBJECT}
+          navigation={navigation}
         />
       </Modal>
     </View>
@@ -191,10 +194,12 @@ const ModalWindow = ({
   quizId,
   closeModal,
   subject,
+  navigation,
 }) => {
   const setLevelScoreCall = () => {
     setLevelScoreHandle(quizId, score);
     Alert.alert('Notice', `${subject} score ${score}. Saved`);
+    navigation.navigate('GameScreen');
   };
   const playAgain = () => {
     restart();
