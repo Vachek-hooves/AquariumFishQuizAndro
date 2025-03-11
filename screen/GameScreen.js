@@ -1,11 +1,11 @@
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, BackHandler} from 'react-native';
 import MainLayout from '../components/MainLayout';
 import {useContext, useEffect, useState} from 'react';
 import {AquariumContext} from '../store/aqua_context';
 import {ChoosenQuizes, GridItem} from '../components/GameScreen.js';
 import {COLOR} from '../const/colors.js';
 
-const GameScreen = () => {
+const GameScreen = ({navigation}) => {
   const {aquaData, gameScore, totalScore} = useContext(AquariumContext);
   const [choosenQuizes, setChoosenQuizes] = useState([]);
   console.log(aquaData);
@@ -15,6 +15,15 @@ const GameScreen = () => {
   useEffect(() => {
     totalScore();
   }, []);
+
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+      navigation.navigate('MainScreen');
+      return true; // Prevents default back behavior
+    });
+
+    return () => backHandler.remove(); // Cleanup on unmount
+  }, [navigation]);
 
   const choosenQuiz = item => {
     const isChoosen = choosenQuizes.some(quiz => quiz.id === item.id);

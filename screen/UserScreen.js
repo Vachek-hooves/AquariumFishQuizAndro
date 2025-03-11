@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Alert,
+  BackHandler,
 } from 'react-native';
 import {useContext, useEffect, useState} from 'react';
 import {AquariumContext} from '../store/aqua_context';
