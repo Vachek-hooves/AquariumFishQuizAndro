@@ -1,4 +1,4 @@
-package com.aquariumfishquiz
+package com.big.bass.aquariumFishQuiz
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

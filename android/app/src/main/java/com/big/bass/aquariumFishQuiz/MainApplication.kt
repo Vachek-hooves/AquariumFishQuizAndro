@@ -1,4 +1,4 @@
-package com.aquariumfishquiz
+package com.big.bass.aquariumFishQuiz
 
 import android.app.Application
 import com.facebook.react.PackageList

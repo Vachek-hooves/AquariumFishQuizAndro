@@ -77,9 +77,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.aquariumfishquiz"
+    namespace "com.big.bass.aquariumFishQuiz"
     defaultConfig {
-        applicationId "com.aquariumfishquiz"
+        applicationId "com.big.bass.aquariumFishQuiz"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
