@@ -1,4 +1,4 @@
-package com.big.bass.aquariumFishQuiz
+package big.game.bass.bonanza
 
 import android.app.Application
 import com.facebook.react.PackageList
