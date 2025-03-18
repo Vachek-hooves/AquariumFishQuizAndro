@@ -77,11 +77,13 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+    packagingOptions {
+        jniLibs {
+            pickFirsts += ['**/*.so']
+        }
+    }
 
     // This is needed to prevent build failures due to missing files
-    packagingOptions {
-        pickFirst '**/*.so'
-    }
 }
 
 dependencies {
