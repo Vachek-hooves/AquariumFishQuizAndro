@@ -1,16 +1,23 @@
-import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {ActivityIndicator, ImageBackground} from 'react-native';
+import {useEffect} from 'react';
 
-const CustomFlashScreen = () => {
-  const navigation = useNavigation();
+const CustomFlashScreen = props => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (props.onWelcomeComplete) {
+        props.onWelcomeComplete();
+      }
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [props.onWelcomeComplete]);
+
   return (
-    <View style={{flex: 1, backgroundColor: 'yellow'}}>
-      <Text>Splash screen</Text>
-      <ActivityIndicator color="blue" size="large" />
-    </View>
+    <ImageBackground
+      style={{width: '100%', height: '100%', justifyContent: 'center'}}
+      source={require('../assets/img/bg/loader.png')}>
+      <ActivityIndicator color="yellow" size="large" />
+    </ImageBackground>
   );
 };
 
 export default CustomFlashScreen;
-
-const styles = StyleSheet.create({});

@@ -5,6 +5,8 @@ import PlayScreen from './PlayScreen';
 import PlayQuizScreen from './PlayQuizScreen';
 import UserScreen from './UserScreen';
 import RulesScreen from './RulesScreen';
+import CustomFlashScreen from './CustomFlashScreen';
+import ScreenRoute from './ScreenRoute';
 
 export {
   GreatingScreen,
@@ -14,4 +16,6 @@ export {
   PlayQuizScreen,
   UserScreen,
   RulesScreen,
+  CustomFlashScreen,
+  ScreenRoute,
 };
