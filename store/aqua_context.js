@@ -11,7 +11,7 @@ export const AquariumContext = createContext({
 export const AquaProvider = ({children}) => {
   const [aquaData, setAquaData] = useState([]);
   const [gameScore, setGameScore] = useState(0);
-  console.log(gameScore);
+  // console.log(gameScore);
 
   useEffect(() => {
     initData();
